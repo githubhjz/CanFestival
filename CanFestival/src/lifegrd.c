@@ -228,9 +228,7 @@ void GuardTimeAlarm(CO_Data* d, UNS32 id)
           MSG_WAR(0x00, "Node Guard alarm for nodeId : ", i);
 
           // Call error-callback function
-          if (*d->nodeguardError) {
-            (*d->nodeguardError)(d, i);
-          }
+          (*d->nodeguardError)(d, i);
 
           // Mark node as disconnected
           d->NMTable[i] = Disconnected;

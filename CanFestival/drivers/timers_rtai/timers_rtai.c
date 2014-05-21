@@ -15,7 +15,9 @@
 
 #define TIMERLOOP_TASK_CREATED        1
 
-TimerCallback_t exitall;
+static TimerCallback_t exitall;
+static TimerCallback_t init_callback;
+static CO_Data* callback_od;
 
 SEM *CanFestival_mutex;
 SEM *condition_mutex;
@@ -57,9 +59,11 @@ void TimerInit(void)
  * Stop Timer Task
  * @param exitfunction
  */
-void StopTimerLoop(TimerCallback_t exitfunction)
+void StopTimerLoop(CO_Data* d, TimerCallback_t exitfunction)
 {
 	exitall = exitfunction;
+	callback_od = d;
+
 	stop_timer = 1;
 	rt_cond_signal(timer_set);
 }
@@ -96,8 +100,6 @@ void LeaveMutex(void)
 	rt_sem_signal(CanFestival_mutex);
 }
 
-static TimerCallback_t init_callback;
-
 /**
  * Timer Task
  */
@@ -114,7 +116,7 @@ void timerloop_task_proc(void *arg)
 	last_occured_alarm = last_time_read;
 
 	/* trigger first alarm */
-	SetAlarm(NULL, 0, init_callback, 0, 0);
+	SetAlarm(callback_od, 0, init_callback, 0, 0);
 	
 	do{
 		RTIME real_alarm;
@@ -145,7 +147,7 @@ void timerloop_task_proc(void *arg)
 	}while ( ret != SEM_ERR && !stop_timer);
 	if(exitall){
 		EnterMutex();
-		exitall(NULL,0);
+		exitall(callback_od, 0);
 		LeaveMutex();
 	}
 	rt_make_soft_real_time();
@@ -156,11 +158,12 @@ void timerloop_task_proc(void *arg)
  * Create the Timer Task
  * @param _init_callback
  */
-void StartTimerLoop(TimerCallback_t _init_callback)
+void StartTimerLoop(CO_Data* d, TimerCallback_t _init_callback)
 {
 	stop_timer = 0;	
 	init_callback = _init_callback;
-	
+	callback_od = d;
+
 	/* start timerloop_task ( do nothing and get blocked ) */
 	timerloop_thr = rt_thread_create(timerloop_task_proc, NULL, 0);
 }

@@ -120,10 +120,10 @@ void TimerCleanup(void)
 	DeleteCriticalSection(&CanFestival_mutex);
 }
 
-void StopTimerLoop(TimerCallback_t exitfunction)
+void StopTimerLoop(CO_Data* d, TimerCallback_t exitfunction)
 {
 	EnterMutex();
-	exitfunction(NULL,0);
+	exitfunction(d, 0);
 	LeaveMutex();
 
 	stop_timer = 1;
@@ -136,14 +136,14 @@ void StopTimerLoop(TimerCallback_t exitfunction)
 	CloseHandle(timer_thread);
 }
 
-void StartTimerLoop(TimerCallback_t _init_callback)
+void StartTimerLoop(CO_Data* d, TimerCallback_t _init_callback)
 {
 	unsigned long timer_thread_id;
 	stop_timer = 0;
 	init_callback = _init_callback;
 	EnterMutex();
 		// At first, TimeDispatch will call init_callback.
-	SetAlarm(NULL, 0, init_callback, 0, 0);
+	SetAlarm(d, 0, init_callback, 0, 0);
 	LeaveMutex();
 	timer_thread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)TimerThreadLoop, NULL, 0, &timer_thread_id);
 }

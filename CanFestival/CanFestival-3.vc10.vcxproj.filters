@@ -19,6 +19,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
     </Filter>
+    <Filter Include="Header Files\unix">
+      <UniqueIdentifier>{87837a60-bc9c-443f-9aa8-50100657dd03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\unix">
+      <UniqueIdentifier>{18b1b071-248b-495e-8ebf-6decc1879b88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\dcf.c">
@@ -62,6 +68,21 @@
     </ClCompile>
     <ClCompile Include="drivers\win32\win32.c">
       <Filter>Source Files\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\timers_unix\timers_unix.c">
+      <Filter>Source Files\unix</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\timers_kernel\timers_kernel.c">
+      <Filter>Source Files\unix</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\timers_xeno\timers_xeno.c">
+      <Filter>Source Files\unix</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\timers_kernel_xeno\timers_kernel_xeno.c">
+      <Filter>Source Files\unix</Filter>
+    </ClCompile>
+    <ClCompile Include="drivers\timers_rtai\timers_rtai.c">
+      <Filter>Source Files\unix</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -124,6 +145,12 @@
     </ClInclude>
     <ClInclude Include="include\win32\timerscfg.h">
       <Filter>Header Files\win32</Filter>
+    </ClInclude>
+    <ClInclude Include="include\unix\canfestival.h">
+      <Filter>Header Files\unix</Filter>
+    </ClInclude>
+    <ClInclude Include="include\unix\applicfg.h">
+      <Filter>Header Files\unix</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

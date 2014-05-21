@@ -65,7 +65,7 @@ void timer_notify(unsigned long data)
 	LeaveMutex();
 }
 
-void StartTimerLoop(TimerCallback_t init_callback)
+void StartTimerLoop(CO_Data* d, TimerCallback_t init_callback)
 {
 	getElapsedTime();
 	last_alarm_set = last_time_read;
@@ -76,15 +76,15 @@ void StartTimerLoop(TimerCallback_t init_callback)
 
 	EnterMutex();
 	// At first, TimeDispatch will call init_callback.
-	SetAlarm(NULL, 0, init_callback, 0, 0);
+	SetAlarm(d, 0, init_callback, 0, 0);
 	LeaveMutex();
 }
 
-void StopTimerLoop(TimerCallback_t exitfunction)
+void StopTimerLoop(CO_Data* d, TimerCallback_t exitfunction)
 {
 	EnterMutex();
 	del_timer (&timer);
-	exitfunction(NULL,0);
+	exitfunction(d, 0);
 	LeaveMutex();
 }
 

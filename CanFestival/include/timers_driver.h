@@ -64,14 +64,14 @@ void TimerCleanup(void);
  * @brief Start the timer task
  * @param Callback A callback function
  */
-void StartTimerLoop(TimerCallback_t Callback);
+void StartTimerLoop(CO_Data* d, TimerCallback_t Callback);
 
 /**
  * @ingroup timer
  * @brief Stop the timer task
  * @param Callback A callback function
  */
-void StopTimerLoop(TimerCallback_t Callback);
+void StopTimerLoop(CO_Data* d, TimerCallback_t Callback);
 
 /**
  * @brief Stop the timer task

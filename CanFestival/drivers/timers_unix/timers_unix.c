@@ -70,21 +70,21 @@ void TimerInit(void)
 #endif
 }
 
-void StopTimerLoop(TimerCallback_t exitfunction)
+void StopTimerLoop(CO_Data* d, TimerCallback_t exitfunction)
 {
 	EnterMutex();
 	if(timer_delete (timer)) {
 		perror("timer_delete()");
 	}
-	exitfunction(NULL,0);
+	exitfunction(d, 0);
 	LeaveMutex();
 }
 
-void StartTimerLoop(TimerCallback_t init_callback)
+void StartTimerLoop(CO_Data* d, TimerCallback_t init_callback)
 {
 	EnterMutex();
 	// At first, TimeDispatch will call init_callback.
-	SetAlarm(NULL, 0, init_callback, 0, 0);
+	SetAlarm(d, 0, init_callback, 0, 0);
 	LeaveMutex();
 }
 

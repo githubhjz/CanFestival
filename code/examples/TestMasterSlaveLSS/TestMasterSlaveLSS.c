@@ -285,14 +285,14 @@ int main(int argc,char **argv)
 	}
 
 	// Start timer thread
-	StartTimerLoop(&InitNodes);
+	StartTimerLoop(NULL, &InitNodes);
 
 	// wait Ctrl-C
 	
 	pause();
 
 	// Stop timer thread
-	StopTimerLoop(&Exit);
+	StopTimerLoop(NULL, &Exit);
 	
 	// Close CAN devices (and can threads)
 	if(strcmp(MasterBoard.baudrate, "none")) canClose(&TestMaster_Data);	

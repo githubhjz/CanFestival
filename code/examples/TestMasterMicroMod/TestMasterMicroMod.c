@@ -490,14 +490,14 @@ int main(int argc,char **argv)
 	}
 	
 	// Start timer thread
-	StartTimerLoop(&InitNodes);
+	StartTimerLoop(NULL, &InitNodes);
 
 	// wait Ctrl-C
 	pause();
 	eprintf("Finishing.\n");
 	
 	// Stop timer thread
-	StopTimerLoop(&Exit);
+	StopTimerLoop(NULL, &Exit);
 	
 fail_master:
 	if(MasterBoard.baudrate) canClose(&TestMaster_Data);	

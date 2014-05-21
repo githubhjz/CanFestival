@@ -328,7 +328,7 @@ int NodeInit(int NodeID, int NodeType)
 	/* Defining the node Id */
 	setNodeId(CANOpenShellOD_Data, NodeID);
 	/* Start Timer thread */
-	StartTimerLoop(&Init);
+	StartTimerLoop(NULL, &Init);
 	return 0;
 }
 
@@ -478,7 +478,7 @@ int main(int argc, char** argv)
 	printf("Finishing.\n");
 
 	// Stop timer thread
-	StopTimerLoop(&Exit);
+	StopTimerLoop(NULL, &Exit);
 
 	/* Close CAN board */
 	canClose(CANOpenShellOD_Data);

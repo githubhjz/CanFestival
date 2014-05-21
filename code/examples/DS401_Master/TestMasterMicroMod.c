@@ -506,7 +506,7 @@ int main(int argc,char **argv)
 	}
 	
 	// Start timer thread
-	StartTimerLoop(&InitNodes);
+	StartTimerLoop(NULL, &InitNodes);
 
 	// wait Ctrl-C
 	pause();
@@ -519,7 +519,7 @@ int main(int argc,char **argv)
 	setState(&TestMaster_Data, Stopped);
 	
 	// Stop timer thread
-	StopTimerLoop(&Exit);
+	StopTimerLoop(NULL, &Exit);
 	
 fail_master:
 	if(MasterBoard.baudrate) canClose(&TestMaster_Data);	

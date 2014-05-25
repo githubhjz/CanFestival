@@ -25,7 +25,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 #include <stdio.h>
+#ifdef _WIN32
+#include <Windows.h>
+#else
 #include <unistd.h>
+#endif
 
 #define NEED_PRINT_MESSAGE
 #include "can_driver.h"
@@ -35,46 +39,70 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 typedef struct {
   char used;
+#ifdef _WIN32
+  PHANDLE pipe[2];
+#else
   int pipe[2];
+#endif
 } CANPipe;
 
 CANPipe canpipes[MAX_NB_CAN_PIPES] = {{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},};
 
 /*********functions which permit to communicate with the board****************/
-UNS8 canReceive_driver(CAN_HANDLE fd0, Message *m)
+UNS8 LIBAPI canReceive_driver(CAN_HANDLE fd0, Message *m)
 {
-	if(read(((CANPipe*)fd0)->pipe[0], m, sizeof(Message)) != (ssize_t)sizeof(Message))
+#ifdef _WIN32
+	DWORD bytesRead = 0;
+	ReadFile(((CANPipe*)fd0)->pipe[0], m, sizeof(Message), &bytesRead, NULL);
+
+	if (bytesRead != sizeof(Message))
 	{
 		return 1;
 	}
+
+#else
+	ssize_t bytesRead = read(((CANPipe*)fd0)->pipe[0], m, sizeof(Message));
+	if(bytesRead != (ssize_t)sizeof(Message))
+	{
+		return 1;
+	}
+#endif
 	return 0;
 }
 
 /***************************************************************************/
-UNS8 canSend_driver(CAN_HANDLE fd0, Message const *m)
+UNS8 LIBAPI canSend_driver(CAN_HANDLE fd0, Message const *m)
 {
-  int i;
-  
-  printf("%lx->[ ", (CANPipe*)fd0 - &canpipes[0]); 
-  for(i=0; i < MAX_NB_CAN_PIPES; i++)
-  {
-  	if(canpipes[i].used && &canpipes[i] != (CANPipe*)fd0)
-  	{
-		printf("%x ",i);	
-  	}
-  }
-  printf(" ]");	
-  print_message(m);
-  
-  // Send to all readers, except myself
-  for(i=0; i < MAX_NB_CAN_PIPES; i++)
-  {
-  	if(canpipes[i].used && &canpipes[i] != (CANPipe*)fd0)
-  	{
-		write(canpipes[i].pipe[1], m, sizeof(Message));
-  	}
-  }
-  return 0;
+	int i;
+
+	printf("%lx->[ ", (CANPipe*)fd0 - &canpipes[0]);
+
+	for(i = 0; i < MAX_NB_CAN_PIPES; i++)
+	{
+		if(canpipes[i].used && &canpipes[i] != (CANPipe*)fd0)
+		{
+			printf("%x ",i);
+		}
+	}
+
+	printf(" ]");	
+	print_message(m);
+
+	// Send to all readers, except myself
+	for (i = 0; i < MAX_NB_CAN_PIPES; i++)
+	{
+		if (canpipes[i].used && &canpipes[i] != (CANPipe*)fd0)
+		{
+#ifdef _WIN32
+			DWORD bytesWritten;
+			WriteFile(canpipes[i].pipe[1], m, sizeof(Message), &bytesWritten, NULL);
+#else
+			write(canpipes[i].pipe[1], m, sizeof(Message));
+#endif
+		}
+	}
+
+	return 0;
 }
 
 /***************************************************************************/
@@ -92,40 +120,59 @@ int TranslateBaudRate(char* optarg){
 	return 0x0000;
 }
 
-UNS8 canChangeBaudRate_driver( CAN_HANDLE fd0, char* baud)
+UNS8 LIBAPI canChangeBaudRate_driver(CAN_HANDLE fd0, char* baud)
 {
     printf("%lx-> changing to baud rate %s[%d]\n", (CANPipe*)fd0 - &canpipes[0],baud,TranslateBaudRate(baud)); 
     return 0;
 }
 
-/***************************************************************************/
-CAN_HANDLE canOpen_driver(s_BOARD *board)
+/*!	\brief Opens a pipe, if a slot if still available
+ *	\return NULL if all slots are filled
+ */
+CAN_HANDLE LIBAPI canOpen_driver(s_BOARD *board)
 {
-  int i;  
-  for(i=0; i < MAX_NB_CAN_PIPES; i++)
-  {
-  	if(!canpipes[i].used)
-	  	break;
-  }
+	int i;  
+	for (i = 0; i < MAX_NB_CAN_PIPES; i++)
+	{
+		if (!canpipes[i].used)
+		{
+			break;
+		}
+	}
 
-  /* Create the pipe.  */
-  if (i==MAX_NB_CAN_PIPES || pipe(canpipes[i].pipe))
-    {
-      fprintf (stderr, "Open failed.\n");
-      return (CAN_HANDLE)NULL;
-    }
+	/* Create the pipe.  */
+	if (i == MAX_NB_CAN_PIPES)
+	{
+#ifdef _WIN32
+		char result = CreatePipe(canpipes[i].pipe[0], canpipes[i].pipe[1], NULL, 0);
+#else
+		char result = (pipe(canpipes[i].pipe) == 0);
+#endif
+		if (!result)
+		{
+			fprintf(stderr, "Open failed.\n");
+			return (CAN_HANDLE)NULL;
+		}
+	}
 
-   canpipes[i].used = 1;
-   return (CAN_HANDLE) &canpipes[i];
+	canpipes[i].used = 1;
+	return (CAN_HANDLE) &canpipes[i];
 }
 
-/***************************************************************************/
-int canClose_driver(CAN_HANDLE fd0)
+/*!	\brief Closes the pipe handle
+ */
+int LIBAPI canClose_driver(CAN_HANDLE fd0)
 {
-  close(((CANPipe*)fd0)->pipe[0]);
-  close(((CANPipe*)fd0)->pipe[1]);
-  ((CANPipe*)fd0)->used = 0;
-  return 0;
+	CANPipe* pipeInfo = (CANPipe*)fd0;
+
+#ifdef _WIN32
+	CloseHandle(pipeInfo->pipe[0]);
+	CloseHandle(pipeInfo->pipe[1]);
+#else
+	close(pipeInfo->pipe[0]);
+	close(pipeInfo->pipe[1]);
+#endif
+
+	pipeInfo->used = 0;
+	return 0;
 }
-
-

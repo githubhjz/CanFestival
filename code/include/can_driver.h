@@ -74,7 +74,7 @@ UNS8 DLL_CALL(canChangeBaudRate)(CAN_HANDLE, char *)FCT_PTR_INIT;
 
 #define _P(fc) case fc: MSG(#fc" ");break;
 
-static inline void print_message(Message const *m)
+static __inline void print_message(Message const *m)
 {
     int i;
     UNS8 fc;

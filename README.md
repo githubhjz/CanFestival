@@ -5,6 +5,8 @@ URL: http://www.canfestival.org/code
 
 Notes
 
+- Added win32 to can_virtual driver
+- Fix in win32 dll for uvccm
 - Added OD pointer to timer start&stop
   + Callback did define this parameter but it was filled with NULL
   + UNTESTED on rtai/xeno
@@ -12,3 +14,4 @@ Notes
 - Fixed warnings:
   + dfc.c: unused variable node in CheckSDOAndContinue
   + lifegrd.c: removed check in GuardTimeAlarm, like everywhere else
+

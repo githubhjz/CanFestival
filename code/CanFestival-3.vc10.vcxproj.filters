@@ -84,6 +84,9 @@
     <ClCompile Include="drivers\timers_rtai\timers_rtai.c">
       <Filter>Source Files\unix</Filter>
     </ClCompile>
+    <ClCompile Include="drivers\unix\unix.c">
+      <Filter>Source Files\unix</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\can.h">
@@ -157,5 +160,8 @@
     <CustomBuildStep Include="src\win32\CanFestival-3.def">
       <Filter>Source Files</Filter>
     </CustomBuildStep>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="notes.txt" />
   </ItemGroup>
 </Project>

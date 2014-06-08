@@ -40,7 +40,7 @@ TIMERS_DRIVER = SUB_TIMERS_DRIVER
 ENABLE_DLL_DRIVERS = SUB_ENABLE_DLL_DRIVERS
 BINUTILS_PREFIX = SUB_BINUTILS_PREFIX
 
-INCLUDES = -I../../include -I../../include/$(TARGET) -I../../include/$(TIMERS_DRIVER)
+INCLUDES = -I../../include
 
 OBJS = $(TARGET).o
 
@@ -49,9 +49,8 @@ ifneq ($(TIMERS_DRIVER),timers_)
 OBJS += ../$(TIMERS_DRIVER)/$(TIMERS_DRIVER).o
 endif
 
-SRC_HFILES = ../../include/$(TARGET)/applicfg.h ../../include/$(TARGET)/canfestival.h
-
-TARGET_HFILES = $(PREFIX)/include/$(TARGET)/applicfg.h $(PREFIX)/include/$(TARGET)/canfestival.h
+SRC_HFILES = ../../include/canfestival/applicfg.h ../../include/canfestival/canfestival.h
+TARGET_HFILES = $(PREFIX)/include/canfestival/applicfg.h $(PREFIX)/include/canfestival/canfestival.h
 
 all: driver
 

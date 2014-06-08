@@ -36,10 +36,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 */
 
-#include "data.h"
-#include "sync.h"
-#include "canfestival.h"
-#include "sysdep.h"
+#include <canfestival/data.h>
+#include <canfestival/sync.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 /* Prototypes for internals functions */
 

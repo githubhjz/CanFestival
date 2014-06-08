@@ -37,10 +37,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 
-#include "data.h"
-#include "lss.h"
-#include "canfestival.h"
-#include "sysdep.h"
+#include <canfestival/data.h>
+#include <canfestival/lss.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 #ifdef CO_ENABLE_LSS
 

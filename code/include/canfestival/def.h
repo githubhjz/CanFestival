@@ -20,11 +20,15 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+#ifndef __CANFESTIVAL_DEF__
+#define __CANFESTIVAL_DEF__
 
-#ifndef __def_h__
-#define __def_h__
+#include <canfestival/config.h>
 
-#include <config.h>
+/*!
+ * \todo enums
+ */
+
 
 /** definitions used for object dictionary access. ie SDO Abort codes . (See DS 301 v.4.02 p.48)
  */
@@ -175,5 +179,5 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define state10 0x0A
 #define state11 0x0B
 
-#endif /* __def_h__ */
+#endif
 

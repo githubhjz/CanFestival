@@ -32,12 +32,11 @@
 **
 */
 
-#include <data.h>
-#include "lifegrd.h"
-#include "canfestival.h"
-#include "dcf.h"
-#include "sysdep.h"
-
+#include <canfestival/data.h>
+#include <canfestival/lifegrd.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/dcf.h>
+#include <canfestival/sysdep.h>
 
 void ConsumerHeartbeatAlarm(CO_Data* d, UNS32 id);
 void ProducerHeartbeatAlarm(CO_Data* d, UNS32 id);

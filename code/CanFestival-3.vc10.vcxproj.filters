@@ -12,15 +12,9 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Header Files\win32">
-      <UniqueIdentifier>{90752f71-956a-4bea-b160-f31310d6051f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx</Extensions>
-    </Filter>
-    <Filter Include="Header Files\unix">
-      <UniqueIdentifier>{87837a60-bc9c-443f-9aa8-50100657dd03}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\unix">
       <UniqueIdentifier>{18b1b071-248b-495e-8ebf-6decc1879b88}</UniqueIdentifier>
@@ -89,71 +83,74 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\can.h">
+    <ClInclude Include="include\canfestival\nmtMaster.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\can_driver.h">
+    <ClInclude Include="include\canfestival\nmtSlave.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\data.h">
+    <ClInclude Include="include\canfestival\objacces.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\dcf.h">
+    <ClInclude Include="include\canfestival\objdictdef.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\def.h">
+    <ClInclude Include="include\canfestival\pdo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\lifegrd.h">
+    <ClInclude Include="include\canfestival\sdo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\lss.h">
+    <ClInclude Include="include\canfestival\states.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nmtMaster.h">
+    <ClInclude Include="include\canfestival\sync.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\nmtSlave.h">
+    <ClInclude Include="include\canfestival\sysdep.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\objacces.h">
+    <ClInclude Include="include\canfestival\timer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\objdictdef.h">
+    <ClInclude Include="include\canfestival\timers_driver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\pdo.h">
+    <ClInclude Include="include\canfestival\can.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\sdo.h">
+    <ClInclude Include="include\canfestival\can_driver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\states.h">
+    <ClInclude Include="include\canfestival\data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\sync.h">
+    <ClInclude Include="include\canfestival\dcf.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\timer.h">
+    <ClInclude Include="include\canfestival\def.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\timers_driver.h">
+    <ClInclude Include="include\canfestival\emcy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\win32\applicfg.h">
-      <Filter>Header Files\win32</Filter>
+    <ClInclude Include="include\canfestival\lifegrd.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\win32\canfestival.h">
-      <Filter>Header Files\win32</Filter>
+    <ClInclude Include="include\canfestival\lss.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\win32\timerscfg.h">
-      <Filter>Header Files\win32</Filter>
+    <ClInclude Include="include\canfestival\applicfg.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\unix\canfestival.h">
-      <Filter>Header Files\unix</Filter>
+    <ClInclude Include="include\canfestival\canfestival.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\unix\applicfg.h">
-      <Filter>Header Files\unix</Filter>
+    <ClInclude Include="include\canfestival\timerscfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\canfestival\config.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

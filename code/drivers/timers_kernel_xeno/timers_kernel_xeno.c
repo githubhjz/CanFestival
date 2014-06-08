@@ -31,9 +31,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <native/cond.h>
 #include <native/alarm.h>
 
-#include "applicfg.h"
-#include "can_driver.h"
-#include "timer.h"
+#include <canfestival/applicfg.h>
+#include <canfestival/can_driver.h>
+#include <canfestival/timer.h>
 
 #define TIMERLOOP_TASK_CREATED        1
 

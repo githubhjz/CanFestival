@@ -20,15 +20,15 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#ifndef __can_driver_h__
-#define __can_driver_h__
+#ifndef __CANFESTIVAL_CAN_DRIVER__
+#define __CANFESTIVAL_CAN_DRIVER__
 
 struct struct_s_BOARD;
 
 typedef struct struct_s_BOARD s_BOARD;
 
-#include "applicfg.h"
-#include "can.h"
+#include <canfestival/applicfg.h>
+#include <canfestival/can.h>
 
 /**
  * @brief The CAN board configuration

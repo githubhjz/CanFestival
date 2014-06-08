@@ -24,10 +24,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *  @ingroup userapi
  */
  
-#ifndef __states_h__
-#define __states_h__
+#ifndef __CANFESTIVAL_STATES__
+#define __CANFESTIVAL_STATES__
 
-#include <applicfg.h>
+#include <canfestival/applicfg.h>
+#include <canfestival/data.h>
 
 /* The nodes states 
  * -----------------
@@ -96,8 +97,6 @@ void _operational(CO_Data* d);
  * @param *d Pointer on a CAN object data structure
  */
 void _stopped(CO_Data* d);
-
-#include "data.h"
 
 /************************* prototypes ******************************/
 

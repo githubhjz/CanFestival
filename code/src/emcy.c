@@ -33,12 +33,10 @@
 **
 */
 
-#include <data.h>
-#include "emcy.h"
-#include "canfestival.h"
-#include "sysdep.h"
-
-
+#include <canfestival/data.h>
+#include <canfestival/emcy.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 UNS32 OnNumberOfErrorsUpdate(CO_Data* d, const indextable * unsused_indextable, UNS8 unsused_bSubindex);
 

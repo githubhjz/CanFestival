@@ -32,11 +32,11 @@ TARGET = SUB_TARGET
 CAN_DRIVER = SUB_CAN_DRIVER
 TIMERS_DRIVER = SUB_TIMERS_DRIVER
 
-INCLUDES = -I../../include -I../../include/$(TARGET) -I../../include/$(CAN_DRIVER) -I../../include/$(TIMERS_DRIVER)
+INCLUDES = -I../../include -I../../include/$(CAN_DRIVER)
 
 OBJS = $(TIMERS_DRIVER).o
 
-SRC_HFILES = ../../include/$(TIMERS_DRIVER)/timerscfg.h
+SRC_HFILES = ../../include/canfestival/timerscfg.h
 
 TARGET_HFILES = $(PREFIX)/include/canfestival/timerscfg.h
 

@@ -39,7 +39,8 @@ CAN_DRIVER = SUB_CAN_DRIVER
 TIMERS_DRIVER = SUB_TIMERS_DRIVER
 ENABLE_LSS = SUB_ENABLE_LSS
 
-INCLUDES = -I../include -I../include/$(TARGET) -I../include/$(TIMERS_DRIVER) -I../drivers/$(TARGET)
+#INCLUDES = -I../include -I../include/$(TARGET) -I../include/$(TIMERS_DRIVER) -I../drivers/$(TARGET)
+INCLUDES = -I../include -I../drivers/$(TARGET)
 
 OBJS = $(TARGET)_objacces.o $(TARGET)_lifegrd.o $(TARGET)_sdo.o\
 	    $(TARGET)_pdo.o $(TARGET)_sync.o $(TARGET)_nmtSlave.o $(TARGET)_nmtMaster.o $(TARGET)_states.o $(TARGET)_timer.o $(TARGET)_dcf.o $(TARGET)_emcy.o
@@ -95,7 +96,7 @@ clean:
 install:
 	$(MAKE) -C $(KERNELDIR) M=$(shell pwd) modules_install
 	mkdir -p $(PREFIX)/include/canfestival
-	cp ../include/*.h $(PREFIX)/include/canfestival
+	cp ../include/canfestival*.h $(PREFIX)/include/canfestival
 
 uninstall:
 	rm -rf $(PREFIX)/include/canfestival
@@ -135,7 +136,7 @@ install: libcanfestival.a
 	mkdir -p $(PREFIX)/lib/
 	mkdir -p $(PREFIX)/include/canfestival
 	cp libcanfestival.a $(PREFIX)/lib/
-	cp ../include/*.h $(PREFIX)/include/canfestival
+	cp ../include/canfestival/*.h $(PREFIX)/include/canfestival
 
 uninstall:
 	rm -f $(PREFIX)/lib/libcanfestival.a

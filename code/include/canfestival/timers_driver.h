@@ -24,14 +24,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *  @ingroup userapi
  */
 
-#ifndef __timer_driver_h__
-#define __timer_driver_h__
+#ifndef __CANFESTIVAL_TIMER_DRIVER__
+#define __CANFESTIVAL_TIMER_DRIVER__
 
-#include "timerscfg.h"
-#include "timer.h"
+#include <canfestival/timerscfg.h>
+#include <canfestival/timer.h>
 
 // For use from CAN driver
-
 
 /**
  * @ingroup timer

@@ -20,8 +20,8 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#ifndef __data_h__
-#define __data_h__
+#ifndef __CANFESTIVAL_DATA__
+#define __CANFESTIVAL_DATA__
 
 #ifdef __cplusplus
 extern "C" {
@@ -32,21 +32,21 @@ extern "C" {
  */
 typedef struct struct_CO_Data CO_Data;
 
-#include "applicfg.h"
-#include "def.h"
-#include "can.h"
-#include "objdictdef.h"
-#include "objacces.h"
-#include "sdo.h"
-#include "pdo.h"
-#include "states.h"
-#include "lifegrd.h"
-#include "sync.h"
-#include "nmtSlave.h"
-#include "nmtMaster.h"
-#include "emcy.h"
+#include <canfestival/applicfg.h>
+#include <canfestival/def.h>
+#include <canfestival/can.h>
+#include <canfestival/objdictdef.h>
+#include <canfestival/objacces.h>
+#include <canfestival/sdo.h>
+#include <canfestival/pdo.h>
+#include <canfestival/states.h>
+#include <canfestival/lifegrd.h>
+#include <canfestival/sync.h>
+#include <canfestival/nmtSlave.h>
+#include <canfestival/nmtMaster.h>
+#include <canfestival/emcy.h>
 #ifdef CO_ENABLE_LSS
-#include "lss.h"
+#include <canfestival/lss.h>
 #endif
 
 /**
@@ -344,6 +344,6 @@ struct struct_CO_Data {
 };
 #endif
 
-#endif /* __data_h__ */
+#endif
 
 

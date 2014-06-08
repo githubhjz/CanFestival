@@ -1,8 +1,7 @@
 /*
-This file is part of CanFestival, a library implementing CanOpen Stack.
+This file is part of CanFestival, a library implementing CanOpen Stack. 
 
 Copyright (C): Edouard TISSERANT and Francis DUPIN
-Win32 Port Leonid Tochinski
 
 See COPYING file for copyrights details.
 
@@ -20,22 +19,25 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-#ifndef CANFESTIVAL_H_
-#define CANFESTIVAL_H_
 
-#include "timerscfg.h"
-#include "can_driver.h"
-#include "data.h"
-#include "timers_driver.h"
+#ifndef __CANFESTIVAL_CAN__
+#define __CANFESTIVAL_CAN__
 
-#include <windows.h>
-typedef HINSTANCE LIB_HANDLE;
+#include <canfestival/applicfg.h>
 
-UNS8 UnLoadCanDriver(LIB_HANDLE handle);
-LIB_HANDLE LoadCanDriver(LPCSTR driver_name);
-UNS8 canSend(CAN_PORT port, Message *m);
-CAN_PORT canOpen(s_BOARD *board, CO_Data * d);
-int canClose(CO_Data * d);
-UNS8 canChangeBaudRate(CAN_PORT port, char* baud);
+/** 
+ * @brief The CAN message structure 
+ * @ingroup can
+ */
+typedef struct {
+  UNS16 cob_id;	/**< message's ID */
+  UNS8 rtr;		/**< remote transmission request. (0 if not rtr message, 1 if rtr message) */
+  UNS8 len;		/**< message's length (0 to 8) */
+  UNS8 data[8]; /**< message's datas */
+} Message;
 
-#endif /*CANFESTIVAL_H_*/
+#define Message_Initializer {0,0,0,{0,0,0,0,0,0,0,0}}
+
+typedef UNS8 (*canSend_t)(Message *);
+
+#endif

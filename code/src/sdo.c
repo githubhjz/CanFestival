@@ -34,8 +34,8 @@
 
 #include <stdlib.h>
 
-#include "canfestival.h"
-#include "sysdep.h"
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 /* Uncomment if your compiler does not support inline functions */
 #define NO_INLINE

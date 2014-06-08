@@ -20,15 +20,15 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#ifndef __timer_h__
-#define __timer_h__
+#ifndef __CANFESTIVAL_TIMER__
+#define __CANFESTIVAL_TIMER__
 
-#include <timerscfg.h>
-#include <applicfg.h>
+#include <canfestival/timerscfg.h>
+#include <canfestival/applicfg.h>
 
 #define TIMER_HANDLE INTEGER16
+#include <canfestival/data.h>
 
-#include "data.h"
 
 /* --------- types and constants definitions --------- */
 #define TIMER_FREE 0
@@ -89,4 +89,4 @@ void setTimer(TIMEVAL value);
  */
 TIMEVAL getElapsedTime(void);
 
-#endif /* #define __timer_h__ */
+#endif

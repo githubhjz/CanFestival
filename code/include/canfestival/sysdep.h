@@ -1,7 +1,7 @@
 /*
-This file is part of CanFestival, a library implementing CanOpen Stack. 
+This file is part of CanFestival, a library implementing CanOpen Stack.
 
-Copyright (C): Edouard TISSERANT and Francis DUPIN
+Copyright (C): 
 
 See COPYING file for copyrights details.
 
@@ -20,20 +20,28 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#ifndef __TIMERSCFG_H__
-#define __TIMERSCFG_H__
+#ifndef __CANFESTIVAL_SYSDEP__
+#define __CANFESTIVAL_SYSDEP__
 
-#include <linux/param.h>
-#include <linux/kthread.h>
+#include <canfestival/config.h>
 
-/* Time unit : clock ticks (jiffies) */
-/* Time resolution : ticks per second (architecture-dependent value 'HZ' defined in linux/param.h) */
+#ifdef CANOPEN_BIG_ENDIAN
 
-#define TIMEVAL unsigned long
-#define TIMEVAL_MAX (~(TIMEVAL)0) >> 1
-#define MS_TO_TIMEVAL(ms) ( (ms * HZ) / 1000 )
-#define US_TO_TIMEVAL(us) ( (us * HZ) / 1000000)
+/* Warning: the argument must not update pointers, e.g. *p++ */
 
-#define TASK_HANDLE struct task_struct*
+#define UNS16_LE(v)  ((((UNS16)(v) & 0xff00) >> 8) | \
+		      (((UNS16)(v) & 0x00ff) << 8))
+
+#define UNS32_LE(v)  ((((UNS32)(v) & 0xff000000) >> 24) |	\
+		      (((UNS32)(v) & 0x00ff0000) >> 8)  |	\
+		      (((UNS32)(v) & 0x0000ff00) << 8)  |	\
+		      (((UNS32)(v) & 0x000000ff) << 24))
+
+#else
+
+#define UNS16_LE(v)  (v)
+#define UNS32_LE(v)  (v)
+
+#endif
 
 #endif

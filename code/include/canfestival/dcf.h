@@ -19,7 +19,10 @@ You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-#include "data.h"
+#ifndef __CANFESTIVAL_DCF__
+#define __CANFESTIVAL_DCF__
+
+#include <canfestival/data.h>
 
 #define DCF_STATUS_INIT         0
 #define DCF_STATUS_READ_CHECK   1
@@ -49,3 +52,4 @@ UNS8 init_consise_dcf(CO_Data* d, UNS8 nodeId);
 */
 UNS8 check_and_start_node(CO_Data* d, UNS8 nodeId);
 
+#endif

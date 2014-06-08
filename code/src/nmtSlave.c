@@ -30,10 +30,10 @@
 **
 **
 */
-#include "nmtSlave.h"
-#include "states.h"
-#include "canfestival.h"
-#include "sysdep.h"
+#include <canfestival/nmtSlave.h>
+#include <canfestival/states.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 /*!
 ** put the slave in the state wanted by the master

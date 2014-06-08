@@ -34,9 +34,9 @@
 */
 
 
-#include "data.h"
-#include "sysdep.h"
-#include "dcf.h"
+#include <canfestival/data.h>
+#include <canfestival/sysdep.h>
+#include <canfestival/dcf.h>
 
 typedef struct {
     UNS16 Index;

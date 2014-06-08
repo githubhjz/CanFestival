@@ -28,10 +28,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *  @ingroup networkmanagement
  */
  
-#ifndef __nmtMaster_h__
-#define __nmtMaster_h__
+#ifndef __CANFESTIVAL_NMT_MASTER__
+#define __CANFESTIVAL_NMT_MASTER__
 
-#include "data.h"
+#include <canfestival/data.h>
 
 /** 
  * @ingroup nmtmaster
@@ -83,4 +83,4 @@ UNS8 masterSendNMTnodeguard (CO_Data* d, UNS8 nodeId);
 UNS8 masterRequestNodeState (CO_Data* d, UNS8 nodeId);
 
 
-#endif /* __nmtMaster_h__ */
+#endif

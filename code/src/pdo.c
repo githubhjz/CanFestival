@@ -21,10 +21,10 @@
   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307
   USA
 */
-#include "pdo.h"
-#include "objacces.h"
-#include "canfestival.h"
-#include "sysdep.h"
+#include <canfestival/pdo.h>
+#include <canfestival/objacces.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 /*!
 ** @file   pdo.c

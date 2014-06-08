@@ -5,8 +5,8 @@
 #include <signal.h>
 #include <time.h>
 
-#include "applicfg.h"
-#include "timer.h"
+#include <canfestival/applicfg.h>
+#include <canfestival/timer.h>
 
 static pthread_mutex_t CanFestival_mutex = PTHREAD_MUTEX_INITIALIZER;
 

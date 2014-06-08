@@ -32,9 +32,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 extern "C" {
 #endif
 
-#include "canfestival.h"
-#include "timer.h"
-#include "timers_driver.h"
+#include <canfestival/canfestival.h>
+#include <canfestival/timer.h>
+#include <canfestival/timers_driver.h>
 
 #ifdef __cplusplus
 };

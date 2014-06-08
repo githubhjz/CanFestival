@@ -47,9 +47,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #endif /*NOT_USE_DYNAMIC_LOADING*/
 
-#include "data.h"
-#include "canfestival.h"
-#include "timers_driver.h"
+#include <canfestival/data.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/timers_driver.h>
+#include <canfestival/can_driver.h>
 
 #define MAX_NB_CAN_PORTS 16
 
@@ -60,8 +61,6 @@ typedef struct {
   TASK_HANDLE receiveTask; /**< CAN Receiver task*/
   CO_Data* d; /**< CAN object data*/
 } CANPort;
-
-#include "can_driver.h"
 
 CANPort canports[MAX_NB_CAN_PORTS] = {{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,},{0,}};
 

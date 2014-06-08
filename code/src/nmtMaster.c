@@ -30,9 +30,9 @@
 **
 **
 */
-#include "nmtMaster.h"
-#include "canfestival.h"
-#include "sysdep.h"
+#include <canfestival/nmtMaster.h>
+#include <canfestival/canfestival.h>
+#include <canfestival/sysdep.h>
 
 /*!
 **

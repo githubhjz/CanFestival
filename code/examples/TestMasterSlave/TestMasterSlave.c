@@ -35,7 +35,7 @@ void pause(void)
 #include <signal.h>
 #endif
 
-#include "canfestival.h"
+#include <canfestival/canfestival.h>
 //#include <can_driver.h>
 //#include <timers_driver.h>
 

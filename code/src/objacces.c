@@ -38,7 +38,7 @@
 /* #define DEBUG_ERR_CONSOLE_ON */
 
 
-#include "data.h"
+#include <canfestival/data.h>
 
 //We need the function implementation for linking
 //Only a placeholder with a define isnt enough!

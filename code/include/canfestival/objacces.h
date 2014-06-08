@@ -36,16 +36,14 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *  @ingroup userapi
  */
  
-#ifndef __objacces_h__
-#define __objacces_h__
+#ifndef __CANFESTIVAL_OBJ_ACCESS__
+#define __CANFESTIVAL_OBJ_ACCESS__
 
-#include <applicfg.h>
-
+#include <canfestival/applicfg.h>
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 typedef UNS32 (*valueRangeTest_t)(UNS8 typeValue, void *Value);
 typedef void (* storeODSubIndex_t)(CO_Data* d, UNS16 wIndex, UNS8 bSubindex);
@@ -284,4 +282,4 @@ UNS32 RegisterSetODentryCallBack(CO_Data* d, UNS16 wIndex, UNS8 bSubindex, ODCal
 }
 #endif
 
-#endif /* __objacces_h__ */
+#endif

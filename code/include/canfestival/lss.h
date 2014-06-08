@@ -30,9 +30,15 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *               - LSS address (/2/ Identity Object, Index 1018H)
  *  @ingroup comobj
  */
-					 
-#ifndef __LSS_h__
-#define __LSS_h__
+#ifndef __CANFESTIVAL_LSS__
+#define __CANFESTIVAL_LSS__
+
+#include <canfestival/applicfg.h>
+#include <canfestival/data.h>
+
+/*
+ * \todo enums
+ */
 
 #define SLSS_ADRESS	0x7E4
 #define MLSS_ADRESS	0x7E5

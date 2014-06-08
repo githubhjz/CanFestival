@@ -9,9 +9,9 @@
 #include <native/cond.h>
 #include <native/alarm.h>
 
-#include "applicfg.h"
-#include "can_driver.h"
-#include "timer.h"
+#include <canfestival/applicfg.h>
+#include <canfestival/can_driver.h>
+#include <canfestival/timer.h>
 
 #define TIMERLOOP_TASK_CREATED        1
 

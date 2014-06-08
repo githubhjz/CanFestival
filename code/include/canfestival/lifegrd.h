@@ -49,11 +49,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 **
 */
 				 
-#ifndef __lifegrd_h__
-#define __lifegrd_h__
+#ifndef __CANFESTIVAL_LIFEGRD__
+#define __CANFESTIVAL_LIFEGRD__
 
-
-#include <applicfg.h>
+#include <canfestival/applicfg.h>
+#include <canfestival/data.h>
 
 typedef void (*heartbeatError_t)(CO_Data*, UNS8);
 void _heartbeatError(CO_Data* d, UNS8 heartbeatID);
@@ -66,8 +66,6 @@ void _post_SlaveStateChange(CO_Data* d, UNS8 nodeId, e_nodeState newNodeState);
 
 typedef void (*nodeguardError_t)(CO_Data*, UNS8);
 void _nodeguardError(CO_Data* d, UNS8 id);
-
-#include "data.h"
 
 /*************************************************************************
  * Functions
@@ -144,4 +142,4 @@ void heartbeatStop(CO_Data* d);
 void proceedNODE_GUARD (CO_Data* d, Message* m);
 
 
-#endif /*__lifegrd_h__ */
+#endif

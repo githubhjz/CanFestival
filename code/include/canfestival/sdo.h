@@ -31,12 +31,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *  @ingroup comobj
  */
  
-#ifndef __sdo_h__
-#define __sdo_h__
+#ifndef __CANFESTIVAL_SDO__
+#define __CANFESTIVAL_SDO__
 
 struct struct_s_transfer;
 
-#include "timer.h"
+#include <canfestival/timer.h>
 
 /* Block mode : Data consumer receive step 
  * - set to RXSTEP_STARTED when client receive initiate upload response 
@@ -102,7 +102,7 @@ struct struct_s_transfer {
 typedef struct struct_s_transfer s_transfer;
 
 
-#include "data.h"
+#include <canfestival/data.h>
 
 /** 
  * @brief Reset of a SDO exchange on timeout.

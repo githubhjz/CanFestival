@@ -35,7 +35,7 @@ void pause(void)
 #include <signal.h>
 #endif
 
-#include "canfestival.h"
+#include <canfestival/canfestival.h>
 #include "TestMasterMicroMod.h"
 #include "TestMaster.h"
 unsigned int slavenodeid = 0x40;

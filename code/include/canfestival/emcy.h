@@ -35,11 +35,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *  @ingroup comobj
  */
 					 
-#ifndef __emcy_h__
-#define __emcy_h__
+#ifndef __CANFESTIVAL_EMCY__
+#define __CANFESTIVAL_EMCY__
 
-
-#include <applicfg.h>
+#include <canfestival/applicfg.h>
+#include <canfestival/data.h>
 
 /* The error states 
  * ----------------- */
@@ -53,8 +53,6 @@ typedef struct {
 	UNS8 errRegMask;
 	UNS8 active;
 } s_errors;
-
-#include "data.h"
 
 
 typedef void (*post_emcy_t)(CO_Data* d, UNS8 nodeID, UNS16 errCode, UNS8 errReg);
@@ -105,4 +103,4 @@ void emergencyStop(CO_Data* d);
  */
 void proceedEMCY(CO_Data* d, Message* m);
 
-#endif /*__emcy_h__ */
+#endif

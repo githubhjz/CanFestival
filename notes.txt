@@ -1,0 +1,11 @@
+
+- fix config
+
+Nice to have:
+- proper types
+ + strings should end with null, not spaces
+ + use inttypes.h instead of custom typedefs
+- internal dependancies ... 
+- documentation
+- internal states as enum
+- post-build script to move include/canfestival

@@ -26,7 +26,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <stddef.h>		/* for NULL */
 #include <errno.h>
 
-#include "config.h"
+#include <canfestival/config.h>
 
 #ifdef RTCAN_SOCKET
 #include "rtdm/rtcan.h"
@@ -64,7 +64,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define CAN_SETSOCKOPT setsockopt
 #endif
 
-#include "can_driver.h"
+#include <canfestival/can_driver.h>
 
 /*********functions which permit to communicate with the board****************/
 UNS8

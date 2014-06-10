@@ -125,23 +125,26 @@ void proceedNODE_GUARD(CO_Data* d, Message* m )
       */
       d->nodeGuardStatus[nodeId] = *d->LifeTimeFactor;
 
-      /* Boot-Up frame reception */
-      if ( d->NMTable[nodeId] == Initialisation)
-      {
-          /*
-          ** The device send the boot-up message (Initialisation)
-          ** to indicate the master that it is entered in
-          ** pre_operational mode
-          */
-          MSG_WAR(0x3100, "The NMT is a bootup from node : ", nodeId);
-          /* call post SlaveBootup with NodeId */
-		  (*d->post_SlaveBootup)(d, nodeId);
-      } else if (d->NMTable[nodeId] != newNodeState)
-      {
-            (*d->post_SlaveStateChange)(d, nodeId, newNodeState);
+        if (d->NMTable[nodeId] != newNodeState)
+        {
+            /* Boot-Up frame reception */
+            if (d->NMTable[nodeId] == Unknown_state && newNodeState == Initialisation)
+            {
+                /*
+                 ** The device send the boot-up message (Initialisation)
+                 ** to indicate the master that it is entered in
+                 ** pre_operational mode
+                 */
+                MSG_WAR(0x3100, "The NMT is a bootup from node : ", nodeId);
+                /* call post SlaveBootup with NodeId */
+                (*d->post_SlaveBootup)(d, nodeId);
+            } else {
+                (*d->post_SlaveStateChange)(d, nodeId, newNodeState);
+            }
+            
             /* the slave's state receievd is stored in the NMTable */
             d->NMTable[nodeId] = newNodeState;
-      }
+        }
 
       if( d->NMTable[nodeId] != Unknown_state ) {
         UNS8 index, ConsumerHeartBeat_nodeId ;

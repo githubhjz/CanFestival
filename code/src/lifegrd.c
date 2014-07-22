@@ -82,92 +82,87 @@ void ConsumerHeartbeatAlarm(CO_Data* d, UNS32 id)
 
 void proceedNODE_GUARD(CO_Data* d, Message* m )
 {
-	UNS8 nodeId = (UNS8) GET_NODE_ID((*m));
+  UNS8 nodeId = (UNS8) GET_NODE_ID((*m));
 
-	if ((m->rtr == 1))
-	{
-		/*!
-		 * Notice that only the master can have sent this
-		 * node guarding request
-		 */
+  if((m->rtr == 1) )
+    /*!
+    ** Notice that only the master can have sent this
+    ** node guarding request
+    */
+    {
+      /*!
+      ** Receiving a NMT NodeGuarding (request of the state by the
+      ** master)
+      ** Only answer to the NMT NodeGuarding request, the master is
+      ** not checked (not implemented)
+      */
+      if (nodeId == *d->bDeviceNodeId )
+        {
+          Message msg;
+          UNS16 tmp = *d->bDeviceNodeId + 0x700;
+          msg.cob_id = UNS16_LE(tmp);
+          msg.len = (UNS8)0x01;
+          msg.rtr = 0;
+          msg.data[0] = d->nodeState;
+          if (d->toggle)
+            {
+              msg.data[0] |= 0x80 ;
+              d->toggle = 0 ;
+            }
+          else
+            d->toggle = 1 ;
+          /* send the nodeguard response. */
+          MSG_WAR(0x3130, "Sending NMT Nodeguard to master, state: ", d->nodeState);
+          canSend(d->canHandle,&msg );
+        }
 
-		/*!
-		 * Receiving a NMT NodeGuarding (request of the state by the master)
-		 * Only answer to the NMT NodeGuarding request, the master is
-		 * not checked (not implemented)
-		 */
-		if (nodeId == *d->bDeviceNodeId)
-		{
-			Message msg;
-			UNS16 tmp = *d->bDeviceNodeId + 0x700;
-			msg.cob_id = UNS16_LE(tmp);
-			msg.len = (UNS8)0x01;
-			msg.rtr = 0;
-			msg.data[0] = d->nodeState;
+    }else{ /* Not a request CAN */
+      /* The state is stored on 7 bit */
+      e_nodeState newNodeState = (e_nodeState) ((*m).data[0] & 0x7F);
 
-			if (d->toggle)
-			{
-				msg.data[0] |= 0x80 ;
-				d->toggle = 0 ;
-			} else
-			{
-				d->toggle = 1 ;
-			}
+      MSG_WAR(0x3110, "Received NMT nodeId : ", nodeId);
+      
+      /*!
+      ** Record node response for node guarding service
+      */
+      d->nodeGuardStatus[nodeId] = *d->LifeTimeFactor;
 
-			/* send the nodeguard response. */
-			MSG_WAR(0x3130, "Sending NMT Nodeguard to master, state: ", d->nodeState);
-			canSend(d->canHandle,&msg );
-		}
-	}else
-	{	/* Not a request CAN */
-		/* The state is stored on 7 bit */
-		e_nodeState newNodeState = (e_nodeState)((*m).data[0] & 0x7F);
+        if (d->NMTable[nodeId] != newNodeState)
+        {
+            /* Boot-Up frame reception */
+            if (d->NMTable[nodeId] == Unknown_state && newNodeState == Initialisation)
+            {
+                /*
+                 ** The device send the boot-up message (Initialisation)
+                 ** to indicate the master that it is entered in
+                 ** pre_operational mode
+                 */
+                MSG_WAR(0x3100, "The NMT is a bootup from node : ", nodeId);
+                /* call post SlaveBootup with NodeId */
+                (*d->post_SlaveBootup)(d, nodeId);
+            } else {
+                (*d->post_SlaveStateChange)(d, nodeId, newNodeState);
+            }
+            
+            /* the slave's state receievd is stored in the NMTable */
+            d->NMTable[nodeId] = newNodeState;
+        }
 
-		MSG_WAR(0x3110, "Received NMT nodeId : ", nodeId);
-
-		/*!
-		 * Record node response for node guarding service
-		 */
-		d->nodeGuardStatus[nodeId] = *d->LifeTimeFactor;
-
-		if (d->NMTable[nodeId] != newNodeState)
-		{
-			(*d->post_SlaveStateChange)(d, nodeId, newNodeState);
-			/* the slave's state receievd is stored in the NMTable */
-			d->NMTable[nodeId] = newNodeState;
-		}
-
-		/* Boot-Up frame reception */
-		if (d->NMTable[nodeId] == Initialisation)
-		{
-			/*
-			 * The device send the boot-up message (Initialisation)
-			 * to indicate the master that it is entered in
-			 * pre_operational mode
-			 */
-			MSG_WAR(0x3100, "The NMT is a bootup from node : ", nodeId);
-			/* call post SlaveBootup with NodeId */
-			(*d->post_SlaveBootup)(d, nodeId);
-		}
-
-		if (d->NMTable[nodeId] != Unknown_state)
-		{
-			UNS8 index, ConsumerHeartBeat_nodeId;
-
-			for (index = (UNS8)0x00; index < *d->ConsumerHeartbeatCount; index++)
-			{
-				ConsumerHeartBeat_nodeId = (UNS8)( ((d->ConsumerHeartbeatEntries[index]) & (UNS32)0x00FF0000) >> (UNS8)16);
-
-				if (nodeId == ConsumerHeartBeat_nodeId)
-				{
-					TIMEVAL time = ((d->ConsumerHeartbeatEntries[index]) & (UNS32)0x0000FFFF);
-					/* Renew alarm for next heartbeat. */
-					DelAlarm(d->ConsumerHeartBeatTimers[index]);
-					d->ConsumerHeartBeatTimers[index] = SetAlarm(d, index, &ConsumerHeartbeatAlarm, MS_TO_TIMEVAL(time), 0);
-				}
-			}
-		}
-	}
+      if( d->NMTable[nodeId] != Unknown_state ) {
+        UNS8 index, ConsumerHeartBeat_nodeId ;
+        for( index = (UNS8)0x00; index < *d->ConsumerHeartbeatCount; index++ )
+          {
+            ConsumerHeartBeat_nodeId = (UNS8)( ((d->ConsumerHeartbeatEntries[index]) & (UNS32)0x00FF0000) >> (UNS8)16 );
+            if ( nodeId == ConsumerHeartBeat_nodeId )
+              {
+                TIMEVAL time = ( (d->ConsumerHeartbeatEntries[index]) & (UNS32)0x0000FFFF ) ;
+                /* Renew alarm for next heartbeat. */
+                DelAlarm(d->ConsumerHeartBeatTimers[index]);
+                d->ConsumerHeartBeatTimers[index] = SetAlarm(d, index, &ConsumerHeartbeatAlarm, MS_TO_TIMEVAL(time), 0);
+              }
+          }
+      }
+    }
 }
 
 /*! The Producer Timer Callback

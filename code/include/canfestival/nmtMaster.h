@@ -31,7 +31,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_NMT_MASTER__
 #define __CANFESTIVAL_NMT_MASTER__
 
-#include <canfestival/data.h>
+#include <canfestival/applicfg.h>
+
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
 
 /** 
  * @ingroup nmtmaster

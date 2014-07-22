@@ -33,12 +33,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <canfestival/def.h>
 #include <canfestival/can.h>
 
-typedef struct struct_s_PDO_status s_PDO_status;
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
 
-/*
- * \todo replace "in-the-middle" includes with forward declerations
- */
-#include <canfestival/data.h>
+typedef struct struct_s_PDO_status s_PDO_status;
 
 /* Handler for RxPDO event timers : empty function that user can overload */
 void _RxPDO_EventTimers_Handler(CO_Data *d, UNS32 pdoNum);

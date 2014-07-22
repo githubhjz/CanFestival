@@ -22,7 +22,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_DCF__
 #define __CANFESTIVAL_DCF__
 
-#include <canfestival/data.h>
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
 
 #define DCF_STATUS_INIT         0
 #define DCF_STATUS_READ_CHECK   1

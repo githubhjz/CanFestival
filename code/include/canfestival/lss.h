@@ -34,7 +34,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define __CANFESTIVAL_LSS__
 
 #include <canfestival/applicfg.h>
-#include <canfestival/data.h>
+
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
 
 /*
  * \todo enums
@@ -169,11 +171,8 @@ typedef struct struct_lss_transfer lss_transfer_t;
 typedef UNS8 lss_transfer_t;
 #endif
   
-
-
 void startLSS(CO_Data* d);
 void stopLSS(CO_Data* d);
-
 
 /** transmit a LSS message 
  * command is the LSS command specifier

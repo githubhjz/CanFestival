@@ -27,9 +27,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <canfestival/applicfg.h>
 
 #define TIMER_HANDLE INTEGER16
-#include <canfestival/data.h>
 
-
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
+ 
 /* --------- types and constants definitions --------- */
 #define TIMER_FREE 0
 #define TIMER_ARMED 1

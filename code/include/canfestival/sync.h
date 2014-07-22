@@ -29,6 +29,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_SYNC__
 #define __CANFESTIVAL_SYNC__
 
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
+
 void startSYNC(CO_Data* d);
 
 void stopSYNC(CO_Data* d);

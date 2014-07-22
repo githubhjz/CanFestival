@@ -23,12 +23,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_CAN_DRIVER__
 #define __CANFESTIVAL_CAN_DRIVER__
 
-struct struct_s_BOARD;
-
-typedef struct struct_s_BOARD s_BOARD;
-
 #include <canfestival/applicfg.h>
 #include <canfestival/can.h>
+
+struct struct_s_BOARD;
+typedef struct struct_s_BOARD s_BOARD;
+
 
 /**
  * @brief The CAN board configuration

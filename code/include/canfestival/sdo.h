@@ -34,9 +34,12 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_SDO__
 #define __CANFESTIVAL_SDO__
 
-struct struct_s_transfer;
-
 #include <canfestival/timer.h>
+
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
+
+struct struct_s_transfer;
 
 /* Block mode : Data consumer receive step 
  * - set to RXSTEP_STARTED when client receive initiate upload response 
@@ -100,9 +103,6 @@ struct struct_s_transfer {
   SDOCallback_t Callback;   /**< The user callback func to be called at SDO transaction end */
 };
 typedef struct struct_s_transfer s_transfer;
-
-
-#include <canfestival/data.h>
 
 /** 
  * @brief Reset of a SDO exchange on timeout.
@@ -464,5 +464,7 @@ UNS8 getReadResultNetworkDict (CO_Data* d, UNS8 nodeId, void* data, UNS32 *size,
  * @endcode
 */
 UNS8 getWriteResultNetworkDict (CO_Data* d, UNS8 nodeId, UNS32 * abortCode);
+
+UNS8 GetSDOClientFromNodeId(CO_Data* d, UNS8 nodeId);
 
 #endif

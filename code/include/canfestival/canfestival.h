@@ -29,8 +29,10 @@ extern "C" {
 
 #include <canfestival/timerscfg.h>
 #include <canfestival/can_driver.h>
-#include <canfestival/data.h>
 #include <canfestival/timers_driver.h>
+
+struct struct_CO_Data;
+typedef struct struct_CO_Data CO_Data;
 
 #ifdef _WIN32
 

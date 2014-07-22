@@ -4,6 +4,9 @@ URL: http://www.canfestival.org/code
 
 
 Notes
+- Did some coding style / readability
+- fixed include structure (part 2)
+  + Fixed include dependancies (forward declaration)
 - fixed include structure (part 1)
   + Includes now refer to each other properly and there is no need for an additional include statement
   + All includes refer to <canfestival/HEADER>

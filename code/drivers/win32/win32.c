@@ -33,6 +33,8 @@ extern "C" {
 #endif
 
 #include <canfestival/canfestival.h>
+#include <canfestival/data.h>
+#include <canfestival/states.h>
 #include <canfestival/timer.h>
 #include <canfestival/timers_driver.h>
 

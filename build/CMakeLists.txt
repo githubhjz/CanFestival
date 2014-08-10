@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 2.8)
+
+execute_process(
+	COMMAND ${CANFESTIVAL_REPO_ROOT_SOURCE_DIR}/code/my_configure
+	WORKING_DIRECTORY "${CANFESTIVAL_REPO_ROOT_SOURCE_DIR}/code"
+)
+execute_process(
+	COMMAND make
+	WORKING_DIRECTORY "${CANFESTIVAL_REPO_ROOT_SOURCE_DIR}/code"
+)

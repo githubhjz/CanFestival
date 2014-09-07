@@ -4,7 +4,7 @@
 #ifndef WIN32TEST_H
 #define WIN32TEST_H
 
-#include "data.h"
+#include <canfestival/data.h>
 
 /* Prototypes of function provided by object dictionnary */
 UNS32 win32test_valueRangeTest (UNS8 typeValue, void * value);

@@ -88,6 +88,12 @@ $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 /* index 0x1006 :   Communication / Cycle Period */
                     UNS32 win32test_obj1006 = 0x0;   /* 0 */
 
+					/* index 0x100C :   Guard Time */
+					UNS16 win32test_obj100C = 0x0;   /* 0 */
+
+					/* index 0x100D :   Life Time Factor */
+					UNS8 win32test_obj100D = 0x0;   /* 0 */
+
 /* index 0x1014 :   Emergency COB ID */
                     UNS32 win32test_obj1014 = 0x80 + 0x00;   /* 128 + NodeID */
 

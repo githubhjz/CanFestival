@@ -1,2 +1,2 @@
 #!/bin/bash
-./configure --can=virtual  --debug=WAR,MSG --enable-lss
+./configure --can=virtual --debug=WAR,MSG --enable-lss --binutils=/usr/bin/

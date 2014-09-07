@@ -30,8 +30,9 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define __CANFESTIVAL_PDO__
 
 #include <canfestival/applicfg.h>
-#include <canfestival/def.h>
 #include <canfestival/can.h>
+#include <canfestival/def.h>
+#include <canfestival/timer.h>
 
 struct struct_CO_Data;
 typedef struct struct_CO_Data CO_Data;

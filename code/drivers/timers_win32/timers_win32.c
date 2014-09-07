@@ -25,17 +25,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <stdlib.h>
 #include <sys/timeb.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <canfestival/applicfg.h>
 #include <canfestival/can_driver.h>
 #include <canfestival/timer.h>
 #include <canfestival/timers_driver.h>
 
 #ifdef __cplusplus
-};
+extern "C" {
 #endif
 
 DWORD timebuffer;
@@ -48,7 +44,9 @@ HANDLE timer = NULL;
 volatile int stop_timer=0;
 
 static TimerCallback_t init_callback;
-
+#ifdef __cplusplus
+};
+#endif
 
 void EnterMutex(void)
 {
@@ -83,8 +81,6 @@ int TimerThreadLoop(void)
 DWORD TimerThreadLoop(LPVOID arg)
 #endif
 {
-
-
 	while(!stop_timer)
 	{
 		WaitForSingleObject(timer, INFINITE);

@@ -23,30 +23,25 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_DATA__
 #define __CANFESTIVAL_DATA__
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-/* declaration of CO_Data type let us include all necessary headers
- struct struct_CO_Data can then be defined later
- */
-typedef struct struct_CO_Data CO_Data;
-
 #include <canfestival/applicfg.h>
-#include <canfestival/def.h>
 #include <canfestival/can.h>
-#include <canfestival/objdictdef.h>
-#include <canfestival/objacces.h>
-#include <canfestival/sdo.h>
-#include <canfestival/pdo.h>
-#include <canfestival/states.h>
-#include <canfestival/lifegrd.h>
-#include <canfestival/sync.h>
-#include <canfestival/nmtSlave.h>
-#include <canfestival/nmtMaster.h>
+#include <canfestival/def.h>
 #include <canfestival/emcy.h>
+#include <canfestival/lifegrd.h>
 #ifdef CO_ENABLE_LSS
 #include <canfestival/lss.h>
+#endif
+#include <canfestival/nmtMaster.h>
+#include <canfestival/nmtSlave.h>
+#include <canfestival/objacces.h>
+#include <canfestival/objdictdef.h>
+#include <canfestival/pdo.h>
+#include <canfestival/sdo.h>
+#include <canfestival/sync.h>
+#include <canfestival/states.h>
+
+#ifdef __cplusplus
+extern "C" {
 #endif
 
 /**
@@ -242,7 +237,6 @@ struct struct_CO_Data {
 #define lss_Initializer
 #endif
 
-
 /* A macro to initialize the data in client app.*/
 /* CO_Data structure */
 #define CANOPEN_NODE_DATA_INITIALIZER(NODE_PREFIX) {\
@@ -343,7 +337,4 @@ struct struct_CO_Data {
 #ifdef __cplusplus
 };
 #endif
-
 #endif
-
-

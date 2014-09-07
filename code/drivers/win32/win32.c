@@ -28,19 +28,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #include <windows.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 #include <canfestival/canfestival.h>
 #include <canfestival/data.h>
 #include <canfestival/states.h>
 #include <canfestival/timer.h>
 #include <canfestival/timers_driver.h>
-
-#ifdef __cplusplus
-};
-#endif
 
 // GetProcAddress doesn't have an UNICODE version for NT
 #ifdef UNDER_CE

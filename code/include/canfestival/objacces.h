@@ -40,6 +40,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define __CANFESTIVAL_OBJ_ACCESS__
 
 #include <canfestival/applicfg.h>
+#include <canfestival/objdictdef.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -281,5 +282,4 @@ UNS32 RegisterSetODentryCallBack(CO_Data* d, UNS16 wIndex, UNS8 bSubindex, ODCal
 #ifdef __cplusplus
 }
 #endif
-
 #endif

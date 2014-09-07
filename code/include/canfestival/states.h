@@ -28,6 +28,11 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define __CANFESTIVAL_STATES__
 
 #include <canfestival/applicfg.h>
+#include <canfestival/can.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 struct struct_CO_Data;
 typedef struct struct_CO_Data CO_Data;
@@ -148,4 +153,7 @@ void setNodeId (CO_Data* d, UNS8 nodeId);
  */
 void initPreOperationalMode (CO_Data* d);
 
+#ifdef __cplusplus
+};
+#endif
 #endif

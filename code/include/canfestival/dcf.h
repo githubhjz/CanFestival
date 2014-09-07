@@ -22,6 +22,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL_DCF__
 #define __CANFESTIVAL_DCF__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct struct_CO_Data;
 typedef struct struct_CO_Data CO_Data;
 
@@ -53,4 +57,7 @@ UNS8 init_consise_dcf(CO_Data* d, UNS8 nodeId);
 */
 UNS8 check_and_start_node(CO_Data* d, UNS8 nodeId);
 
+#ifdef __cplusplus
+};
+#endif
 #endif

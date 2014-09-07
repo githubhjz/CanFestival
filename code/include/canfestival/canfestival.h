@@ -23,13 +23,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #ifndef __CANFESTIVAL__
 #define __CANFESTIVAL__
 
+#include <canfestival/can_driver.h>
+#include <canfestival/timerscfg.h>
+#include <canfestival/timers_driver.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#include <canfestival/timerscfg.h>
-#include <canfestival/can_driver.h>
-#include <canfestival/timers_driver.h>
 
 struct struct_CO_Data;
 typedef struct struct_CO_Data CO_Data;
@@ -120,5 +120,4 @@ UNS8 canChangeBaudRate(CAN_PORT port, char *baud);
 #ifdef __cplusplus
 };
 #endif
-
 #endif

@@ -30,6 +30,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #include <canfestival/timerscfg.h>
 #include <canfestival/timer.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 // For use from CAN driver
 
 /**
@@ -82,4 +86,7 @@ void StopTimerLoop(CO_Data* d, TimerCallback_t Callback);
  */
 void CreateReceiveTask(CAN_PORT port, TASK_HANDLE* handle, void* ReceiveLoopPtr);
 
+#ifdef __cplusplus
+};
+#endif
 #endif

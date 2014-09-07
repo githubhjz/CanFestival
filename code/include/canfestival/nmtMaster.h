@@ -33,6 +33,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 #include <canfestival/applicfg.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 struct struct_CO_Data;
 typedef struct struct_CO_Data CO_Data;
 
@@ -85,5 +89,7 @@ UNS8 masterSendNMTnodeguard (CO_Data* d, UNS8 nodeId);
  */
 UNS8 masterRequestNodeState (CO_Data* d, UNS8 nodeId);
 
-
+#ifdef __cplusplus
+};
+#endif
 #endif
